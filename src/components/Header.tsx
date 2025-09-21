@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logofinal.png';
+import { SquareArrowOutUpRight } from "lucide-react";
 
 const Header = () => {
   return (
@@ -8,16 +9,19 @@ const Header = () => {
         <img src={logo.src} alt="Mikupush Logo" className="h-8 w-8 object-contain" />
       </div>
 
-      <nav className="hidden md:flex gap-6 text-teal-text font-medium">
-        <a href="#features" className="hover:text-aqua-primary transition">Features</a>
-        <a href="#pricing" className="hover:text-aqua-primary transition">Pricing</a>
+      <nav className="hidden md:flex gap-6 text-teal-text font-medium ml-auto items-center">
+        <a href="#docs" className="">Docs</a>
+        <a href="#download" className="">Download</a>
+        <a
+          href="https://github.com/mikupush"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-0.5 transition-colors border-b-2 border-transparent pb-[2px] hover:border-current"
+        >
+          <span className="leading-none">GitHub</span>
+          <SquareArrowOutUpRight className="w-3 h-3 align-center" />
+        </a>
       </nav>
-
-      <div className="hidden md:flex">
-        <button className="px-4 py-2 bg-aqua-primary text-white rounded-full shadow hover:bg-aqua-hover transition">
-          Download
-        </button>
-      </div>
 
       <div className="md:hidden">
         <button className="text-teal-text text-2xl">☰</button>
@@ -27,3 +31,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+

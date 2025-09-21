@@ -1,12 +1,18 @@
 import React from 'react';
 import myImage from '../assets/mikufondo.png';
+import {Button} from "@/components/ui/button";
 
 const Hero = () => {
   return (
+    
     <section className="relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center p-8 md:p-16 bg-bg-air overflow-hidden">
       
       <div className="absolute inset-0 -z-1 pointer-events-none">
-        
+        <body>
+		<div className="grid place-items-center h-screen content-center">
+			<Button>Button</Button>
+		</div>
+	</body>
         <svg className="absolute bottom-[-200px] right-[-200px] w-[700px] h-[700px] opacity-60 animate-blob" viewBox="0 0 200 200">
           <path
             fill="#a9d89b"
