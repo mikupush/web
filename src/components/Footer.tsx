@@ -1,23 +1,29 @@
 import React from 'react';
+import { SquareArrowOutUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 py-8 mt-16">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        {/* Logo & Description */}
-        <div>
-          <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-            <span className="text-lg font-semibold text-gray-800">Mikupush</span>
-          </div>
-          <p className="text-gray-500">
-            Send large files easily and securely. Your simple WeTransfer alternative.
-          </p>
-        </div>
-      </div>
+    <footer className="bg-primary">
+      <div className="container mx-auto flex flex-col items-center gap-6">
+        <p className="text-sm font-sans text-on-background">
+          Miku Push! 2025 made with 🖤
+        </p>
+        <nav className="flex gap-6 font-medium items-center">
+          <a href="#docs">Docs</a>
+          <a href="#download">Download</a>
 
-      {/* Bottom */}
-      <div className="mt-8 text-center text-gray-500 text-sm">
-        © 2025 Mikupush. All rights reserved.
+          <Button asChild variant="ghost" className="text-base font-medium">
+            <a
+              href="https://github.com/mikupush"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1"
+            >
+              GitHub <SquareArrowOutUpRight className="w-4 h-4" />
+            </a>
+          </Button>
+        </nav>
       </div>
     </footer>
   );

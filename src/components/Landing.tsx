@@ -1,16 +1,17 @@
-
-import React from 'react';
-import Header from './Header';
-import HeroSection from './Hero';
-import Features from './Features';
+import React from "react";
+import Header from "./Header";
+import Hero from "./Hero";
+import Footer from "./Footer";
 
 const ReactLanding = () => {
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <Header />
-      <HeroSection />
-      <Features />
-    </>
+      <main className="flex-1 flex flex-col">
+        <Hero />
+      </main>
+      <Footer />
+    </div>
   );
 };
 

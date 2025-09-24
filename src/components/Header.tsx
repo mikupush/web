@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from '../assets/logofinal.png';
 import { SquareArrowOutUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import logo from '../assets/Miku cloud 64.svg?url';
 
 const Header = () => {
   return (
     <header className="w-full flex justify-between items-center px-6 md:px-16 py-4 bg-transparent absolute top-0 left-0 z-50">
       <div className="flex items-center gap-2">
-        <img src={logo.src} alt="Mikupush Logo" className="h-8 w-8 object-contain" />
+        <a href="/" className="flex items-center gap-2">
+          <img src={logo} alt="Mikupush logo" className="w-auto  h-16 " />
+        </a>
       </div>
 
-      <nav className="hidden md:flex gap-6 text-teal-text font-medium ml-auto items-center">
-        <a href="#docs" className="">Docs</a>
-        <a href="#download" className="">Download</a>
-        <a
-          href="https://github.com/mikupush"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-0.5 transition-colors border-b-2 border-transparent pb-[2px] hover:border-current"
-        >
-          <span className="leading-none">GitHub</span>
-          <SquareArrowOutUpRight className="w-3 h-3 align-center" />
-        </a>
+      <nav className="hidden md:flex gap-6 font-medium ml-auto items-center">
+        <a href="#docs">Docs</a>
+        <a href="#download">Download</a>
+
+        <Button asChild variant="ghost">
+          <a
+            href="https://github.com/mikupush"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1"
+          >
+            GitHub <SquareArrowOutUpRight className="w-4 h-4" />
+          </a>
+        </Button>
+
       </nav>
 
       <div className="md:hidden">
@@ -31,6 +37,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
