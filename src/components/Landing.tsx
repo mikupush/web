@@ -1,18 +1,18 @@
 import React from "react";
+import Layout from "@/layouts/Layout";
 import Header from "./Header";
 import Hero from "./Hero";
 import Footer from "./Footer";
 
-const ReactLanding = () => {
+export default function ReactLanding() {
   return (
-    <div className="h-screen flex flex-col">
+    <Layout>
       <Header />
       <main className="flex-1 flex flex-col">
         <Hero />
       </main>
       <Footer />
-    </div>
+    </Layout>
   );
-};
+}
 
-export default ReactLanding;

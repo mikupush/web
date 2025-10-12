@@ -1,39 +1,48 @@
-import React from 'react';
-import { SquareArrowOutUpRight } from "lucide-react";
+import React from "react";
 import { Button } from "@/components/ui/button";
-import logo from '../assets/Miku cloud 64.svg?url';
+import { SquareArrowOutUpRight, Menu } from "lucide-react";
+import logo from "@/assets/Miku-logo64.svg?url";
 
-const Header = () => {
+function NavLinks() {
   return (
-    <header className="w-full flex justify-between items-center px-6 md:px-16 py-4 bg-transparent absolute top-0 left-0 z-50">
-      <div className="flex items-center gap-2">
-        <a href="/" className="flex items-center gap-2">
-          <img src={logo} alt="Mikupush logo" className="w-auto  h-16 " />
-        </a>
-      </div>
-
-      <nav className="hidden md:flex gap-6 font-medium ml-auto items-center">
+    <nav className="hidden md:flex items-center gap-3">
+      <Button asChild variant="ghost">
         <a href="#docs">Docs</a>
+      </Button>
+      <Button asChild variant="ghost">
         <a href="#download">Download</a>
+      </Button>
+      <Button asChild variant="primary">
+        <a
+          href="https://github.com/mikupush"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1"
+        >
+          GitHub <SquareArrowOutUpRight className="w-4 h-4" />
+        </a>
+      </Button>
+    </nav>
+  );
+}
 
-        <Button asChild variant="ghost">
-          <a
-            href="https://github.com/mikupush"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1"
-          >
-            GitHub <SquareArrowOutUpRight className="w-4 h-4" />
-          </a>
-        </Button>
+export default function Header() {
+  return (
+    <header className="sticky top-0 w-full">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" className="flex items-center gap-2">
+          <img src={logo} alt="Miku Push!" className="h-8 w-auto" />
+        </a>
 
-      </nav>
+        <NavLinks />
 
-      <div className="md:hidden">
-        <button className="text-teal-text text-2xl">☰</button>
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon" aria-label="Open menu">
+            <Menu className="w-5 h-5" />
+          </Button>
+        </div>
       </div>
     </header>
   );
-};
+}
 
-export default Header;
