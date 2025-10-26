@@ -1,6 +1,7 @@
 export const en = {
     docs: "Docs",
     download: "Download",
+    download_for_platform: "Download for {{ platform }}",
     or_other: "Or for other platforms",
     hero_kicker: "⚡",
     hero_title: "Lightweight and Simple open source alternative to WeTransfer",

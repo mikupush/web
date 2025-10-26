@@ -4,6 +4,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import type { OS } from "@/lib/detect-os";
 import { detectOS } from "@/lib/detect-os";
 import { useTranslation } from "@/hooks/i18n";
+import { usePlatform } from "@/hooks/os";
+
 
 import lockIcon from "@/assets/Icons/lockIcon.svg?url";
 import starIcon from "@/assets/Icons/starIcon.svg?url";
@@ -14,18 +16,15 @@ import winIcon from "@/assets/os-windows.svg?url";
 import linuxIcon from "@/assets/os-linux.svg?url";
 
 export default function Hero() {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
+  const { platform } = usePlatform();
 
-  const [os, setOs] = useState<OS>("other");
-  useEffect(() => {
-    setOs(detectOS());
-  }, []);
-
-  const info =
-    os === "windows" ? { href: "#download-windows", icon: winIcon,   label: "Download for Windows" } :
-    os === "macos"   ? { href: "#download-macos",   icon: macIcon,   label: "Download for macOS" } :
-    os === "linux"   ? { href: "#download-linux",   icon: linuxIcon, label: "Download for Linux" } :
-                       { href: "#download",         icon: null,      label: "Download" };
+  const platformIcon = {
+    windows: winIcon,
+    macos: macIcon,
+    linux: linuxIcon,
+    other: undefined
+  }
 
   return (
     <section className="flex flex-col py-16">
@@ -40,9 +39,9 @@ export default function Hero() {
 
         <div className="mt-6 flex flex-col items-center">
           <Button asChild variant="primary" size="lg" className="bg-white hover:bg-neutral-200 gap-3 px-6">
-            <a href={info.href}>
-              {info.icon && <img src={info.icon} alt="" aria-hidden className="h-5 w-5" />}
-              <span className="text-base">{info.label}</span>
+            <a href={`#download-${platform}`}>
+              {platformIcon[platform] && <img src={platformIcon[platform]} alt="" aria-hidden className="h-5 w-5" />}
+              <span className="text-base">{t('download_for_platform', { platform })}</span>
             </a>
           </Button>
 

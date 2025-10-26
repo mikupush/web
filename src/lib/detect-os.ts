@@ -1,9 +1,7 @@
 export type OS = "windows" | "macos" | "linux" | "other";
 
-export function detectOS(
-  ua = (typeof navigator !== "undefined" ? navigator.userAgent : "")
-): OS {
-  const u = ua.toLowerCase();
+export function detectOS(): OS {
+  const u = navigator.userAgent.toLowerCase();
   if (u.includes("win")) return "windows";
   if (u.includes("mac os")) return "macos";
   if (u.includes("linux")) return "linux";
