@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import NavLinks from "@/components/ui/NavLinks";
+import NavLinks from "@/components/NavLinks";
 import logo from "@/assets/Miku-logo64.svg?url";
 
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-2">
-          <img src={logo} alt="Miku Push!" className="h-8 w-auto" />
+          <img src={logo} alt="Miku Push!" className="h-15" />
         </a>
 
         <div className="hidden md:block">

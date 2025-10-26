@@ -14,7 +14,6 @@ const buttonVariants = cva(
         ghost:
           "text-on-background hover:bg-primary-hover hover:text-on-background",
         link: "text-primary underline-offset-4 hover:underline",
-        download: "bg-background text-on-background shadow rounded-full hover:shadow-md",
       },
       size: {
         default: "h-9 px-4 py-2",

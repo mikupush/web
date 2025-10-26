@@ -1,15 +1,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { SquareArrowOutUpRight } from "lucide-react";
-import NavLinks from "@/components/ui/NavLinks";
-import { useI18n } from "@/lib/i18n";
+import NavLinks from "@/components/NavLinks";
+import { useTranslation } from "@/hooks/i18n";
 
 export default function Footer() {
-  const t = useI18n();
+  const { t } = useTranslation();
   return (
     <footer className="bg-primary">
       <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col items-center gap-6">
-        <p className="text-sm">{t.footer_made}</p>
+        <p className="text-sm">{t('footer_made')}</p>
 
         <div className="hidden md:block">
           <NavLinks />
