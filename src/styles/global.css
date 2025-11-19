@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    overflow-x: hidden;
+}
+
 .cloud {
     height: 105px;
     background-image: url('/cloud.svg'), url('/cloud-small.svg');

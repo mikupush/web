@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
 interface MikuProps {
     className?: string;
@@ -21,6 +21,10 @@ export default function Miku({ className }: MikuProps) {
         window.addEventListener('resize', () => resolvePosition())
         resolvePosition()
     }, []);
+
+    if (positionX === 0) {
+        return
+    }
 
     return (
         <svg id="miku" className={className} style={{ left: positionX }} width="512" height="512" viewBox="0 0 512 420" fill="none" xmlns="http://www.w3.org/2000/svg">
