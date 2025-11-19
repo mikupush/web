@@ -2,3 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cloud {
+    height: 105px;
+    background-image: url('/cloud.svg'), url('/cloud-small.svg');
+    background-position: bottom left, bottom right 45px;
+    background-repeat: repeat-x, repeat-x;
+    background-size: 1000px, 350px;
+}
+
+.cloud.reversed {
+    transform: rotateX(180deg) rotateY(180deg);
+}
+
+@media screen and (max-width: 1070px) {
+    #miku {
+        display: none;
+    }
+}
