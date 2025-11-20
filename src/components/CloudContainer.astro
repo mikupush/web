@@ -1,0 +1,13 @@
+---
+import Miku from "@/components/Miku.tsx";
+---
+<div>
+  <div class="relative h-[105px]">
+    <Miku className="absolute bottom-0" client:load />
+    <div class="cloud absolute top-0 left-0 w-full h-full"></div>
+  </div>
+  <div class="bg-white py-10 px-7">
+    <slot />
+  </div>
+  <div class="cloud reversed"></div>
+</div>

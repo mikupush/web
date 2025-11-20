@@ -1,0 +1,23 @@
+---
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import NavLinks from "@/components/NavLinks.astro";
+import logo from "@/assets/Miku-logo64.svg?url";
+---
+<header class="sticky top-0 z-50 w-full bg-primary">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2">
+      <img src={logo} alt="Miku Push!" class="h-15" />
+    </a>
+
+    <div class="hidden md:block">
+      <NavLinks />
+    </div>
+
+    <div class="md:hidden">
+      <Button variant="ghost" size="icon" aria-label="Open menu">
+        <Menu className="w-5 h-5" />
+      </Button>
+    </div>
+  </div>
+</header>
