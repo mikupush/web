@@ -1,26 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .cloud {
-    height: 105px;
-    background-image: url('/cloud.svg'), url('/cloud-small.svg');
-    background-position: bottom left, bottom right 45px;
-    background-repeat: repeat-x, repeat-x;
-    background-size: 1000px, 350px;
+  height: 105px;
+  background-image: url('/cloud.svg'), url('/cloud-small.svg');
+  background-position: bottom left, bottom right 45px;
+  background-repeat: repeat-x, repeat-x;
+  background-size: 1000px, 350px;
 }
 
 .cloud.reversed {
-    transform: rotateX(180deg) rotateY(180deg);
+  transform: rotateX(180deg) rotateY(180deg);
 }
 
 @media screen and (max-width: 1070px) {
-    #miku {
-        display: none;
-    }
+  #miku {
+    display: none;
+  }
 }

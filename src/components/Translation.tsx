@@ -4,7 +4,7 @@ interface TranslationProps {
   key: string
 }
 
-export default function Translation({ key }: TranslationProps) {
-  const { t } = useTranslation()
+export default function Translation({key}: TranslationProps) {
+  const {t} = useTranslation()
   return t(key)
 }

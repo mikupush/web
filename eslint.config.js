@@ -8,8 +8,11 @@ export default defineConfig(
   eslint.configs.recommended,
   tseslint.configs.recommended,
   eslintPluginAstro.configs.recommended,
-  reactPlugin.configs.flat.recommended,
-  reactPlugin.configs.flat['jsx-runtime'],
+  {
+    files: ["**/*.jsx", "**/*.tsx"],
+    ...reactPlugin.configs.flat.recommended,
+    ...reactPlugin.configs.flat["jsx-runtime"],
+  },
   {
     rules: {
       "astro/no-set-html-directive": "error"

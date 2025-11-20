@@ -17,5 +17,5 @@ export const es = {
   lightweight_copy:
     "Funciona en segundo plano sin devorar recursos. Preparada para una gran experiencia nativa.",
   footer_made: "Miku Push! 2025 — hecho con ❤️",
-  
+
 } as const

@@ -1,8 +1,8 @@
 ---
 import LinkButton from "@/components/LinkButton.tsx";
-import { SquareArrowOutUpRight } from "lucide-react";
-import { useTranslation } from "@/hooks/i18n";
-const { t } = useTranslation();
+import {SquareArrowOutUpRight} from "lucide-react";
+import {useTranslation} from "@/hooks/i18n";
+const {t} = useTranslation();
 ---
 <nav class="flex items-center gap-3">
   <LinkButton href="#docs">{t('docs')}</LinkButton>
@@ -13,6 +13,7 @@ const { t } = useTranslation();
     rel="noopener noreferrer"
     className="flex items-center gap-1"
   >
-    {t('github')} <SquareArrowOutUpRight className="w-4 h-4" />
+    {t('github')}
+    <SquareArrowOutUpRight className="w-4 h-4"/>
   </LinkButton>
 </nav>

@@ -1,16 +1,16 @@
 ---
-import { Button } from "@/components/ui/button";
-import { SquareArrowOutUpRight } from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {SquareArrowOutUpRight} from "lucide-react";
 import NavLinks from "@/components/NavLinks.astro";
-import { useTranslation } from "@/hooks/i18n.ts";
-const { t } = useTranslation();
+import {useTranslation} from "@/hooks/i18n.ts";
+const {t} = useTranslation();
 ---
 <footer class="bg-primary">
   <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col items-center gap-6">
     <p class="text-sm">{t('footer_made')}</p>
 
     <div class="hidden md:block">
-      <NavLinks />
+      <NavLinks/>
     </div>
 
     <div class="md:hidden">
@@ -21,7 +21,8 @@ const { t } = useTranslation();
           rel="noopener noreferrer"
           class="flex items-center gap-1"
         >
-          GitHub <SquareArrowOutUpRight className="w-4 h-4" />
+          GitHub
+          <SquareArrowOutUpRight className="w-4 h-4"/>
         </a>
       </Button>
     </div>

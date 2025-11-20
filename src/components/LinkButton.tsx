@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import React, {type HTMLAttributeAnchorTarget} from "react";
 
 interface LinkButtonProps {
@@ -9,7 +9,7 @@ interface LinkButtonProps {
   children?: React.ReactNode
 }
 
-export default function LinkButton({ href, target, rel, className, children }: LinkButtonProps) {
+export default function LinkButton({href, target, rel, className, children}: LinkButtonProps) {
   return (
     <Button asChild variant="ghost">
       <a href={href} target={target} rel={rel} className={className}>{children}</a>
