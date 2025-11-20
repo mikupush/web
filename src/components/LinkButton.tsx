@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import type {HTMLAttributeAnchorTarget} from "react";
+import React, {type HTMLAttributeAnchorTarget} from "react";
 
 interface LinkButtonProps {
   href: string
