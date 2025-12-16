@@ -1,0 +1,22 @@
+{
+  "docs": "Docs",
+  "download": "Descargar",
+  "download_not_found_for_platform": "Ver descargas disponibles",
+  "download_for_windows": "Descargar para Windows",
+  "download_for_macos_apple": "Descargar para MacOS Apple Silicon",
+  "download_for_macos_intel": "Descargar paraMacOS Intel",
+  "download_for_linux_deb": "Descargar para Linux (DEB)",
+  "download_for_linux_rpm": "Descargar para Linux (RPM)",
+  "or_other": "O para otras plataformas",
+  "hero_kicker": "⚡",
+  "hero_title": "Alternativa open source ligera y simple a WeTransfer",
+  "hero_subtitle": "Para escritorio: macOS, Windows y Linux",
+  "features_title": "Con funciones de las que te enamorarás 😍",
+  "privacy_first": "Privacidad primero",
+  "privacy_copy": "Compartición anónima por defecto. No necesitas cuenta ni email para compartir archivos.",
+  "simple_by_design": "Simple de diseño",
+  "simple_copy": "Comparte sin complicaciones: sube y pasa el enlace. Muy simple, ¿verdad? 😁",
+  "lightweight": "Ligera",
+  "lightweight_copy": "Funciona en segundo plano sin devorar recursos. Preparada para una gran experiencia nativa.",
+  "footer_made": "Miku Push! 2025 — hecho con ❤️"
+}

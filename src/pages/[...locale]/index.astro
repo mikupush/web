@@ -1,13 +1,19 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 import CloudContainer from "@/components/CloudContainer.astro";
 import Features from "@/components/Features.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+import i18n from "i18next";
+
+export function getStaticPaths() {
+  return buildStaticPaths();
+}
 ---
-<html lang="en">
+<html lang={i18n.language}>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
