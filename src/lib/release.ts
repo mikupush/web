@@ -1,5 +1,4 @@
 import {currentPlatform, type Platform} from "@/lib/platform.ts";
-import { UAParser } from 'ua-parser-js'
 import { t } from 'i18next'
 
 export interface Asset {
