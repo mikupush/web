@@ -1,10 +1,10 @@
 import {Button} from "@/components/ui/button.tsx";
-import macIcon from "@/assets/os-macos.svg?url";
-import winIcon from "@/assets/os-windows.svg?url";
-import linuxIcon from "@/assets/os-linux.svg?url";
 import {useEffect, useState} from "react";
 import {type DownloadUrl, latestReleaseUrlForCurrentPlatform} from "@/lib/release.ts";
 import {useTranslation} from "react-i18next";
+import AppleIcon from "@/components/icons/AppleIcon.tsx";
+import WindowsIcon from "@/components/icons/WindowsIcon.tsx";
+import LinuxIcon from "@/components/icons/LinuxIcon.tsx";
 
 export default function DownloadButton() {
   const [download, setDownload] = useState<DownloadUrl | null>(null)
@@ -15,28 +15,33 @@ export default function DownloadButton() {
       .then(result => setDownload(result))
   }, [])
 
-  const platformIcon = {
-    windows: winIcon,
-    macos: macIcon,
-    linux: linuxIcon,
-    other: undefined
-  }
-
-  const icon = () => {
+  const Icon = () => {
     if (download == null) {
       return ''
     }
 
-    return platformIcon[download.os] ?? ''
+    if (download.os === "windows") {
+      return <WindowsIcon className="h-5 w-5 text-foreground" />
+    }
+
+    if (download.os === "linux") {
+      return <LinuxIcon className="h-5 w-5 text-foreground" />
+    }
+
+    if (download.os === "macos") {
+      return <AppleIcon className="h-5 w-5 text-foreground" />
+    }
+
+    return ''
   }
 
   return (
     <>
       {download ? (
           <>
-            <Button asChild variant="primary" size="lg" className="bg-white hover:bg-neutral-200 gap-3 px-6">
+            <Button asChild size="lg" className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6">
               <a href={download.url}>
-                <img src={icon()} alt="" aria-hidden className="h-5 w-5"/>
+                <Icon />
                 <span className="text-base">{download.label}</span>
               </a>
             </Button>
@@ -45,7 +50,7 @@ export default function DownloadButton() {
             </a>
           </>
       ) : (
-        <Button asChild variant="primary" size="lg" className="bg-white hover:bg-neutral-200 gap-3 px-6">
+        <Button asChild size="lg" className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6">
           <a href="#download">
             <span className="text-base">{t('download_not_found_for_platform')}</span>
           </a>

@@ -30,5 +30,19 @@ export function getStaticPaths() {
   </main>
   <Footer/>
 </Layout>
+<script>
+  const query = window.matchMedia('(prefers-color-scheme: dark)')
+
+  const toggleDarkMode = () => {
+    const body = document.querySelector('body')
+    body?.classList.toggle('dark')
+  }
+
+  if (query.matches) {
+    toggleDarkMode()
+  }
+
+  query.addEventListener('change', toggleDarkMode)
+</script>
 </body>
 </html>
