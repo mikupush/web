@@ -18,6 +18,19 @@ export function getStaticPaths() {
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mikupush</title>
+  <script>
+    const query = window.matchMedia('(prefers-color-scheme: dark)')
+
+    const toggleDarkMode = () => {
+      document.documentElement.classList.toggle('dark')
+    }
+
+    if (query.matches) {
+      toggleDarkMode()
+    }
+
+    query.addEventListener('change', toggleDarkMode)
+  </script>
 </head>
 <body>
 <Layout>
@@ -30,19 +43,5 @@ export function getStaticPaths() {
   </main>
   <Footer/>
 </Layout>
-<script>
-  const query = window.matchMedia('(prefers-color-scheme: dark)')
-
-  const toggleDarkMode = () => {
-    const body = document.querySelector('body')
-    body?.classList.toggle('dark')
-  }
-
-  if (query.matches) {
-    toggleDarkMode()
-  }
-
-  query.addEventListener('change', toggleDarkMode)
-</script>
 </body>
 </html>
