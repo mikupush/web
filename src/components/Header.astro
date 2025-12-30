@@ -1,6 +1,7 @@
 ---
 import {Button} from "@/components/ui/button";
-import {Menu, Moon, Sun} from "lucide-react";
+import ThemeSwitch from "@/components/ThemeSwitch.tsx";
+import {Menu} from "lucide-react";
 import NavLinks from "@/components/NavLinks.astro";
 import logo from "@/assets/Miku-logo64.svg?url";
 ---
@@ -10,8 +11,9 @@ import logo from "@/assets/Miku-logo64.svg?url";
       <img src={logo} alt="Miku Push!" class="h-15"/>
     </a>
 
-    <div class="hidden md:block">
+    <div class="hidden md:flex gap-3">
       <NavLinks/>
+      <ThemeSwitch client:only />
     </div>
 
     <div class="md:hidden">

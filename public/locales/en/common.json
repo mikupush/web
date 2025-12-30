@@ -18,5 +18,7 @@
   "lightweight": "Lightweight",
   "lightweight_copy": "Runs quietly in the background without hogging your machine. Ready to provide a great native user experience.",
   "footer_made": "Miku Push! 2025 — made with ❤️",
-  "github": "GitHub"
+  "github": "GitHub",
+  "set_dark_theme": "Change to dark theme",
+  "set_light_theme": "Change to light theme"
 }

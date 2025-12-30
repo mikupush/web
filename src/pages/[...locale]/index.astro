@@ -19,17 +19,9 @@ export function getStaticPaths() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mikupush</title>
   <script>
-    const query = window.matchMedia('(prefers-color-scheme: dark)')
+    import { getCurrentTheme, applyTheme } from "@/lib/theme.ts";
 
-    const toggleDarkMode = () => {
-      document.documentElement.classList.toggle('dark')
-    }
-
-    if (query.matches) {
-      toggleDarkMode()
-    }
-
-    query.addEventListener('change', toggleDarkMode)
+    applyTheme(getCurrentTheme())
   </script>
 </head>
 <body>
