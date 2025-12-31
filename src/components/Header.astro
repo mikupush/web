@@ -4,6 +4,7 @@ import ThemeSwitch from "@/components/ThemeSwitch.tsx";
 import {Menu} from "lucide-react";
 import NavLinks from "@/components/NavLinks.astro";
 import logo from "@/assets/Miku-logo64.svg?url";
+import LanguageSelect from "@/components/LanguageSelect.tsx";
 ---
 <header class="sticky top-0 z-50 w-full bg-primary">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -14,6 +15,7 @@ import logo from "@/assets/Miku-logo64.svg?url";
     <div class="hidden md:flex gap-3">
       <NavLinks/>
       <ThemeSwitch client:only />
+      <LanguageSelect client:only />
     </div>
 
     <div class="md:hidden">
