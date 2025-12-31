@@ -35,7 +35,7 @@ export default function DownloadButton() {
     const releaseUrl = sessionStorage.getItem("release_url")
 
     if (releaseUrl != null) {
-      window.open(releaseUrl)
+      window.location.href = releaseUrl
     }
 
     setIsFetching(true);
@@ -51,7 +51,8 @@ export default function DownloadButton() {
     url.then(url => {
       if (url === undefined) return
       sessionStorage.setItem('release_url', url)
-      window.open(url)
+      window.location.href = url
+    }).finally(() => {
       setIsFetching(false);
     })
   }
