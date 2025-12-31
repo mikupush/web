@@ -1,5 +1,4 @@
 export type Platform = "windows" | "macos" | "linux" | "other";
-export type InstallerExtension = "msi" | "rpm" | "deb" | "dmg";
 
 export function currentPlatform(): Platform {
   const userAgent = navigator.userAgent.toLowerCase();

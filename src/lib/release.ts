@@ -1,6 +1,3 @@
-import {currentPlatform, type Platform} from "@/lib/platform.ts";
-import { t } from 'i18next'
-
 export interface Asset {
   browser_download_url: string
   name: string
@@ -8,12 +5,6 @@ export interface Asset {
 
 export interface Release {
   assets: Asset[]
-}
-
-export interface DownloadUrl {
-  url: string
-  os: Platform
-  label: string
 }
 
 let assets: Asset[] = []
@@ -33,33 +24,19 @@ function assetUrl(assets: Asset[], suffix: string){
   return asset?.browser_download_url
 }
 
-/**
- * Fetch the current release url for the current platform
- */
-export async function latestReleaseUrlForCurrentPlatform(): Promise<DownloadUrl | null> {
+export async function windowsReleaseUrl() {
   const assets = await fetchLatestReleaseAssets()
-  const platform = currentPlatform()
+  return assetUrl(assets, 'x64_en-US.msi')
+}
 
-  const download: DownloadUrl = { url: '', os: platform, label: '' }
+export async function macOSIntelReleaseUrl() {
+  const assets = await fetchLatestReleaseAssets()
+  return assetUrl(assets, 'x64.dmg')
+}
 
-  switch (true) {
-    case platform === 'windows':
-      download.url = assetUrl(assets, 'x64_en-US.msi') ?? ''
-      download.label = t('download_for_windows')
-      break
-    case platform === 'macos':
-      download.url = assetUrl(assets, 'aarch64.dmg') ?? ''
-      download.label = t('download_for_macos_apple')
-      break
-    case platform === 'linux':
-      download.url = assetUrl(assets, 'amd64.deb') ?? ''
-      download.label = t('download_for_linux_deb')
-      break
-    default:
-      return null
-  }
-
-  return download
+export async function macOSAppleSiliconReleaseUrl() {
+  const assets = await fetchLatestReleaseAssets()
+  return assetUrl(assets, 'aarch64.dmg')
 }
 
 export async function debianReleaseUrl() {

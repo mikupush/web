@@ -1,57 +1,82 @@
 import {Button} from "@/components/ui/button.tsx";
 import {useEffect, useState} from "react";
-import {type DownloadUrl, latestReleaseUrlForCurrentPlatform} from "@/lib/release.ts";
 import {useTranslation} from "react-i18next";
 import AppleIcon from "@/components/icons/AppleIcon.tsx";
 import WindowsIcon from "@/components/icons/WindowsIcon.tsx";
 import LinuxIcon from "@/components/icons/LinuxIcon.tsx";
+import {type Platform, currentPlatform} from "@/lib/platform.ts";
+import {debianReleaseUrl, macOSAppleSiliconReleaseUrl, windowsReleaseUrl} from "@/lib/release.ts";
+import {Loader} from "lucide-react";
 
 export default function DownloadButton() {
-  const [download, setDownload] = useState<DownloadUrl | null>(null)
+  const [platform, setPlatform] = useState<Platform>('other');
+  const [isFetching, setIsFetching] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
-    latestReleaseUrlForCurrentPlatform()
-      .then(result => setDownload(result))
+    setPlatform(currentPlatform())
   }, [])
 
   const Icon = () => {
-    if (download == null) {
-      return ''
-    }
-
-    if (download.os === "windows") {
-      return <WindowsIcon className="h-5 w-5 text-foreground" />
-    }
-
-    if (download.os === "linux") {
-      return <LinuxIcon className="h-5 w-5 text-foreground" />
-    }
-
-    if (download.os === "macos") {
-      return <AppleIcon className="h-5 w-5 text-foreground" />
-    }
-
+    if (platform === "windows") return <WindowsIcon className="h-5 w-5 text-foreground" />
+    if (platform === "linux") return <LinuxIcon className="h-5 w-5 text-foreground" />
+    if (platform === "macos") return <AppleIcon className="h-5 w-5 text-foreground" />
     return ''
+  }
+
+  const label = () => {
+    if (platform === "windows") return t('download_for_windows')
+    if (platform === "linux") return t('download_for_linux_deb')
+    if (platform === "macos") return t('download_for_macos_apple')
+    return ''
+  }
+
+  const downloadRelease = () => {
+    const releaseUrl = sessionStorage.getItem("release_url")
+
+    if (releaseUrl != null) {
+      window.open(releaseUrl)
+    }
+
+    setIsFetching(true);
+    let url: Promise<string | undefined> | undefined = undefined
+    if (platform === "windows") url = windowsReleaseUrl()
+    if (platform === "linux") url = debianReleaseUrl()
+    if (platform === "macos") url = macOSAppleSiliconReleaseUrl()
+
+    if (url === undefined) {
+      return
+    }
+
+    url.then(url => {
+      if (url === undefined) return
+      sessionStorage.setItem('release_url', url)
+      window.open(url)
+      setIsFetching(false);
+    })
   }
 
   return (
     <>
-      {download ? (
+      {platform !== 'other' ? (
           <>
-            <Button asChild size="lg" className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6">
-              <a href={download.url}>
-                <Icon />
-                <span className="text-base">{download.label}</span>
-              </a>
+            <Button
+              onClick={downloadRelease}
+              size="lg"
+              className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6"
+              disabled={isFetching}
+            >
+              <Icon />
+              <span className="text-base">{label()}</span>
+              {isFetching && <Loader className="animate-spin" />}
             </Button>
-            <a href="#download" className="mt-3 text-sm font-medium opacity-90 hover:opacity-100 underline">
+            <a href="#downloads" className="mt-3 text-sm font-medium opacity-90 hover:opacity-100 underline">
               {t('or_other')}
             </a>
           </>
       ) : (
         <Button asChild size="lg" className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6">
-          <a href="#download">
+          <a href="#downloads">
             <span className="text-base">{t('download_not_found_for_platform')}</span>
           </a>
         </Button>
