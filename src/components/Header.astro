@@ -1,9 +1,9 @@
 ---
 import {Button} from "@/components/ui/button";
 import ThemeSwitch from "@/components/ThemeSwitch.tsx";
-import {Menu} from "lucide-react";
-import NavLinks from "@/components/NavLinks.astro";
+import NavLinks from "@/components/NavLinks.tsx";
 import LanguageSelect from "@/components/LanguageSelect.tsx";
+import MobileMenu from "@/components/MobileMenu.tsx";
 ---
 <header class="sticky top-0 z-50 w-full bg-primary">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -11,16 +11,12 @@ import LanguageSelect from "@/components/LanguageSelect.tsx";
       <img src="/logo.svg" alt="Miku Push!" class="h-15"/>
     </a>
 
-    <div class="hidden md:flex gap-3">
+    <nav class="hidden md:flex items-center gap-3">
       <NavLinks/>
       <ThemeSwitch client:only />
       <LanguageSelect client:only />
-    </div>
+    </nav>
 
-    <div class="md:hidden">
-      <Button variant="ghost" size="icon" aria-label="Open menu">
-        <Menu className="w-5 h-5"/>
-      </Button>
-    </div>
+    <MobileMenu client:only />
   </div>
 </header>

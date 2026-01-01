@@ -1,7 +1,5 @@
 ---
-import {Button} from "@/components/ui/button";
-import {SquareArrowOutUpRight} from "lucide-react";
-import NavLinks from "@/components/NavLinks.astro";
+import NavLinks from "@/components/NavLinks.tsx";
 import {t} from "i18next";
 ---
 <footer class="bg-primary">
@@ -10,20 +8,6 @@ import {t} from "i18next";
 
     <div class="hidden md:block">
       <NavLinks/>
-    </div>
-
-    <div class="md:hidden">
-      <Button asChild variant="ghost" className="text-base font-medium">
-        <a
-          href="https://github.com/mikupush"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-1"
-        >
-          GitHub
-          <SquareArrowOutUpRight className="w-4 h-4"/>
-        </a>
-      </Button>
     </div>
   </div>
 </footer>
