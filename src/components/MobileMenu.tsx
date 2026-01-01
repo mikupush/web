@@ -4,8 +4,10 @@ import {Menu, X} from "lucide-react";
 import NavLinks from "@/components/NavLinks.tsx";
 import ThemeSwitch from "@/components/ThemeSwitch.tsx";
 import LanguageSelect from "@/components/LanguageSelect.tsx";
+import {useTranslation} from "react-i18next";
 
 export default function MobileMenu() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => {
@@ -30,7 +32,7 @@ export default function MobileMenu() {
     <>
       {!isOpen ? (
         <div className="md:hidden">
-          <Button variant="ghost" size="icon-lg" aria-label="Open menu" onClick={openMenu}>
+          <Button variant="ghost" size="icon-lg" aria-label={t('open_menu')} onClick={openMenu}>
             <Menu className="size-6" />
           </Button>
         </div>
@@ -41,7 +43,7 @@ export default function MobileMenu() {
               <ThemeSwitch />
               <LanguageSelect />
             </div>
-            <Button onClick={closeMenu} variant="ghost" size="icon-lg">
+            <Button onClick={closeMenu} aria-label={t('close_menu')} variant="ghost" size="icon-lg">
               <X className="size-6" />
             </Button>
           </div>
