@@ -1,6 +1,6 @@
 import {Loader} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
-import {useState} from "react";
+import {useState, type ReactNode} from "react";
 import {
   debianReleaseUrl,
   macOSAppleSiliconReleaseUrl,
@@ -10,7 +10,7 @@ import {
 } from "@/lib/release.ts";
 
 interface DownloadButtonProps {
-  children?: React.ReactNode;
+  children?: ReactNode
   artifact: 'windows'
     | 'linux-deb'
     | 'linux-rpm'
