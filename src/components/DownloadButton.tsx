@@ -54,7 +54,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
       onClick={downloadRelease}
       size="lg"
       variant="outline"
-      className="border-primary"
+      className="border-primary dark:border-primary"
       disabled={isFetching}
     >
       <span className="text-base">{props.children}</span>
