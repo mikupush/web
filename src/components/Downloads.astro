@@ -1,11 +1,64 @@
 ---
 import {t} from 'i18next'
+import LinuxIcon from './icons/LinuxIcon'
+import DownloadButton from "@/components/DownloadButton.tsx";
+import AppleIcon from './icons/AppleIcon';
+import WindowsIcon from './icons/WindowsIcon';
+import {Separator} from './ui/separator'
+import MikuPC from "@/components/MikuPC.tsx";
 ---
 
-<h2 id="downloads" class="mb-20 text-3xl md:text-4xl font-extrabold text-center">
-  <span aria-hidden="true">💾</span> {t('download_now')}
-</h2>
+<section id="downloads">
+  <h2 class="mb-20 text-3xl md:text-4xl font-extrabold text-center">
+    <span aria-hidden="true">💾</span> {t('download_now')}
+  </h2>
 
-<div class="w-4xl mx-auto">
+  <div class="w-4xl mx-auto flex items-center justify-between">
+    <div class="space-y-15 mb-15">
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
+          <AppleIcon className="inline-block w-10 h-10 mr-3" /> macOS
+        </h3>
+        <div class="space-y-3">
+          <div>
+            <DownloadButton artifact="macos-apple-silicon" client:load>
+              {t('download_macos_apple')}
+            </DownloadButton>
+          </div>
 
-</div>
+          <div>
+            <DownloadButton artifact="macos-intel" client:load>
+              {t('download_macos_intel')}
+            </DownloadButton>
+          </div>
+        </div>
+      </div>
+      <Separator />
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
+          <LinuxIcon className="inline-block w-10 h-10 mr-3" /> Linux
+        </h3>
+        <div class="space-y-3">
+          <div>
+            <DownloadButton artifact="linux-deb" client:load>
+              {t('download_linux_deb')}
+            </DownloadButton>
+          </div>
+          <div>
+            <DownloadButton artifact="linux-rpm" client:load>
+              {t('download_linux_rpm')}
+            </DownloadButton>
+          </div>
+        </div>
+      </div>
+      <Separator />
+      <div>
+        <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
+          <WindowsIcon className="inline-block w-10 h-10 mr-3" /> Windows
+        </h3>
+        <DownloadButton artifact="windows" client:load>{t('download_windows')}</DownloadButton>
+      </div>
+    </div>
+    <MikuPC className="w-1/2" />
+  </div>
+</section>

@@ -1,87 +1,64 @@
-import {Button} from "@/components/ui/button.tsx";
-import {useEffect, useState} from "react";
-import {useTranslation} from "react-i18next";
-import AppleIcon from "@/components/icons/AppleIcon.tsx";
-import WindowsIcon from "@/components/icons/WindowsIcon.tsx";
-import LinuxIcon from "@/components/icons/LinuxIcon.tsx";
-import {type Platform, currentPlatform} from "@/lib/platform.ts";
-import {debianReleaseUrl, macOSAppleSiliconReleaseUrl, windowsReleaseUrl} from "@/lib/release.ts";
 import {Loader} from "lucide-react";
+import {Button} from "@/components/ui/button.tsx";
+import {useState} from "react";
+import {
+  debianReleaseUrl,
+  macOSAppleSiliconReleaseUrl,
+  macOSIntelReleaseUrl,
+  redHatReleaseUrl,
+  windowsReleaseUrl
+} from "@/lib/release.ts";
 
-export default function DownloadButton() {
-  const [platform, setPlatform] = useState<Platform>('other');
+interface DownloadButtonProps {
+  children?: React.ReactNode;
+  artifact: 'windows'
+    | 'linux-deb'
+    | 'linux-rpm'
+    | 'macos-intel'
+    | 'macos-apple-silicon'
+}
+
+export default function DownloadButton(props: DownloadButtonProps) {
   const [isFetching, setIsFetching] = useState(false);
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    setPlatform(currentPlatform())
-  }, [])
-
-  const Icon = () => {
-    if (platform === "windows") return <WindowsIcon className="h-5 w-5 text-foreground" />
-    if (platform === "linux") return <LinuxIcon className="h-5 w-5 text-foreground" />
-    if (platform === "macos") return <AppleIcon className="h-5 w-5 text-foreground" />
-    return ''
-  }
-
-  const label = () => {
-    if (platform === "windows") return t('download_for_windows')
-    if (platform === "linux") return t('download_for_linux_deb')
-    if (platform === "macos") return t('download_for_macos_apple')
-    return ''
-  }
 
   const downloadRelease = () => {
-    const releaseUrl = sessionStorage.getItem("release_url")
+    const artifactUrl = sessionStorage.getItem(`${props.artifact}-url`)
 
-    if (releaseUrl != null) {
-      window.location.href = releaseUrl
+    if (artifactUrl != null) {
+      window.location.href = artifactUrl
     }
 
-    setIsFetching(true);
     let url: Promise<string | undefined> | undefined = undefined
-    if (platform === "windows") url = windowsReleaseUrl()
-    if (platform === "linux") url = debianReleaseUrl()
-    if (platform === "macos") url = macOSAppleSiliconReleaseUrl()
+    if (props.artifact === 'windows') url = windowsReleaseUrl()
+    if (props.artifact === 'linux-deb') url = debianReleaseUrl()
+    if (props.artifact === 'linux-rpm') url = redHatReleaseUrl()
+    if (props.artifact === 'macos-intel') url = macOSIntelReleaseUrl()
+    if (props.artifact === 'macos-apple-silicon') url = macOSAppleSiliconReleaseUrl()
 
     if (url === undefined) {
       return
     }
 
+    setIsFetching(true)
     url.then(url => {
       if (url === undefined) return
-      sessionStorage.setItem('release_url', url)
+      sessionStorage.setItem(`${props.artifact}-url`, url)
       window.location.href = url
     }).finally(() => {
-      setIsFetching(false);
+      setIsFetching(false)
     })
   }
 
   return (
-    <>
-      {platform !== 'other' ? (
-          <>
-            <Button
-              onClick={downloadRelease}
-              size="lg"
-              className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6"
-              disabled={isFetching}
-            >
-              <Icon />
-              <span className="text-base">{label()}</span>
-              {isFetching && <Loader className="animate-spin" />}
-            </Button>
-            <a href="#downloads" className="mt-3 text-sm font-medium opacity-90 hover:opacity-100 underline">
-              {t('or_other')}
-            </a>
-          </>
-      ) : (
-        <Button asChild size="lg" className="bg-background shadow-xs hover:bg-background/70 hover:text-accent-foreground hover:cursor-pointer p-6">
-          <a href="#downloads">
-            <span className="text-base">{t('download_not_found_for_platform')}</span>
-          </a>
-        </Button>
-      )}
-    </>
+    <Button
+      onClick={downloadRelease}
+      size="lg"
+      variant="outline"
+      className="border-primary"
+      disabled={isFetching}
+    >
+      <span className="text-base">{props.children}</span>
+      {isFetching && <Loader className="animate-spin" />}
+    </Button>
   )
 }

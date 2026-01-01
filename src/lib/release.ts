@@ -46,5 +46,5 @@ export async function debianReleaseUrl() {
 
 export async function redHatReleaseUrl() {
   const assets = await fetchLatestReleaseAssets()
-  return assetUrl(assets, 'amd64.rpm')
+  return assetUrl(assets, 'x86_64.rpm')
 }

@@ -1,31 +1,35 @@
 ---
 import {t} from "i18next";
 ---
-<h2 class="mb-20 text-3xl md:text-4xl font-extrabold text-center">
-  {t('features_title')} <span aria-hidden="true">😍</span>
-</h2>
+<section id="features">
+  <h2 class="mb-20 text-3xl md:text-4xl font-extrabold text-center">
+    {t('features_title')} <span aria-hidden="true">😍</span>
+  </h2>
 
-<div class="w-4xl mx-auto">
-  <div>
-    <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🥷</span> {t('privacy_first')}</h3>
-    <p class="text-2xl md:text-3xl ml-9">{t('privacy_copy')}</p>
-  </div>
-  <div class="flex justify-between items-center">
-    <img src="/drag-and-drop.png" alt="" />
+  <div class="w-4xl mx-auto space-y-5">
     <div>
-      <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">✨</span> {t('simple_by_design')}</h3>
-      <p class="text-2xl md:text-3xl ml-9">{t('simple_copy')} <span aria-hidden="true">😁</span></p>
+      <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🥷</span> {t('privacy_first')}</h3>
+      <p class="text-2xl md:text-3xl ml-9">{t('privacy_copy')}</p>
+    </div>
+    <div class="flex justify-between items-center">
+      <img class="hidden dark:block w-2/5 min-h-64" src="/drag-and-drop-dark.png" alt="" />
+      <img class="dark:hidden w-2/5 min-h-64" src="/drag-and-drop.png" alt="" />
+      <div>
+        <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">✨</span> {t('simple_by_design')}</h3>
+        <p class="text-2xl md:text-3xl ml-9">{t('simple_copy')} <span aria-hidden="true">😁</span></p>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <div>
+        <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🔗</span> {t('easy_sharing')}</h3>
+        <p class="text-2xl md:text-3xl ml-9">{t('easy_sharing_copy')}</p>
+      </div>
+      <img class="hidden dark:block w-2/5 min-h-64" src="/copy-link-dark.png" alt="" />
+      <img class="dark:hidden w-2/5 min-h-64" src="/copy-link.png" alt="" />
+    </div>
+    <div>
+      <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🪶</span> {t('lightweight')}</h3>
+      <p class="text-2xl md:text-3xl ml-9">{t('lightweight_copy')}</p>
     </div>
   </div>
-  <div class="flex justify-between items-center">
-    <div>
-      <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🔗</span> {t('easy_sharing')}</h3>
-      <p class="text-2xl md:text-3xl ml-9">{t('easy_sharing_copy')}</p>
-    </div>
-    <img src="/copy-link.png" alt="" />
-  </div>
-  <div>
-    <h3 class="text-2xl md:text-3xl mb-2 font-bold"><span aria-hidden="true">🪶</span> {t('lightweight')}</h3>
-    <p class="text-2xl md:text-3xl ml-9">{t('lightweight_copy')}</p>
-  </div>
-</div>
+</section>
