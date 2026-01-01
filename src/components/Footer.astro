@@ -4,10 +4,18 @@ import {t} from "i18next";
 ---
 <footer class="bg-primary">
   <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col items-center gap-6">
-    <p class="text-sm">{t('footer_made')}</p>
+    <p id="copyright" class="text-sm">{t('footer_made')}</p>
 
     <div class="hidden md:block">
       <NavLinks/>
     </div>
   </div>
 </footer>
+<script>
+  const copyright = document.querySelector('#copyright')
+  const now = new Date();
+
+  if (copyright) {
+    copyright.innerHTML = copyright.textContent.replace('2025', now.getFullYear().toString())
+  }
+</script>
