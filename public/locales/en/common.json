@@ -30,5 +30,7 @@
   "set_light_theme": "Change to light theme",
   "select_language": "Change language",
   "open_menu": "Open Menu",
-  "close_menu": "Close Menu"
+  "close_menu": "Close Menu",
+  "hatsune_miku_copyright": "The mascot of Miku Push! is Hatsune Miku, a character created by Crypton Future Media, INC. © Crypton Future Media, INC. 2007.",
+  "not_affiliated": "This project is not affiliated with or endorsed by Crypton Future Media, INC."
 }

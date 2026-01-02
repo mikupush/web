@@ -4,7 +4,11 @@ import {t} from "i18next";
 ---
 <footer class="bg-primary">
   <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col items-center gap-6">
-    <p id="copyright" class="text-sm">{t('footer_made')}</p>
+    <div>
+      <p id="copyright" class="text-sm text-center mb-2">{t('footer_made')}</p>
+      <p class="text-sm text-center">{t('hatsune_miku_copyright')}</p>
+      <p class="text-sm text-center">{t('not_affiliated')}</p>
+    </div>
 
     <div class="hidden md:block">
       <NavLinks/>

@@ -30,5 +30,7 @@
   "set_light_theme": "Cambiar a tema claro",
   "select_language": "Cambiar idioma",
   "open_menu": "Abrir Menu",
-  "close_menu": "Cerrar Menu"
+  "close_menu": "Cerrar Menu",
+  "hatsune_miku_copyright": "La mascota de Miku Push! es Hatsune Miku, un personaje creado por Crypton Future Media, INC. © Crypton Future Media, INC. 2007.",
+  "not_affiliated": "Este proyecto no está afiliado con o apoyado por Crypton Future Media, INC."
 }
