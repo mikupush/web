@@ -1,52 +1,48 @@
-# Astro Starter Kit: Basics
+# Miku Push! Web
+
+The main web page of Miku Push!
+
+
+## Contributing
+
+Contributions are welcome! You can fork this repository and make a pull request with your changes.
+
+We don't want to change much the design, but you can open an issue with recommendations or mistakes we made, 
+you can make changes on it too, but not breaking, for example colors, margins, accessibility issues like contrast or other.
+
+The site should keep simple, SEO friendly and performant, server side rendering related changes will be rejected
+by default because don't have resources for allow server side rendering on our web server.
+
+## Build
+
+Requirements:
+- Node.js 22 or later
+- Docker (if you want a preview on nginx)
+
+### Dev Web server
+
+For development, you should use the dev web.
 
 ```sh
-npm create astro@latest -- --template basics
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Build static site
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+For production, you should build the site.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+After you will found all the static files in the `dist` directory.
 
-## 🧞 Commands
+### Build static site on NGINX
 
-All commands are run from the root of the project, from a terminal:
+You can see a preview using NGINX with using docker.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```sh
+docker compose up -d
+```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+After you can visit the site on your favorite browser in `http://localhost:8080`.
