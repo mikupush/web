@@ -13,6 +13,8 @@ you can make changes on it too, but not breaking, for example colors, margins, a
 The site should keep simple, SEO friendly and performant, server side rendering related changes will be rejected
 by default because we don't have resources for allow server side rendering on our web server.
 
+For the ui we are using [ShadCN](https://ui.shadcn.com/docs/components) components and React for components that require interaction or reusable components.
+
 ## Build
 
 Requirements:
