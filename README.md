@@ -11,7 +11,7 @@ We don't want to change much the design, but you can open an issue with recommen
 you can make changes on it too, but not breaking, for example colors, margins, accessibility issues like contrast or other.
 
 The site should keep simple, SEO friendly and performant, server side rendering related changes will be rejected
-by default because don't have resources for allow server side rendering on our web server.
+by default because we don't have resources for allow server side rendering on our web server.
 
 ## Build
 
