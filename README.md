@@ -19,6 +19,12 @@ Requirements:
 - Node.js 22 or later
 - Docker (if you want a preview on nginx)
 
+Install the dependencies:
+
+```sh
+npm install
+```
+
 ### Dev Web server
 
 For development, you should use the dev web.
