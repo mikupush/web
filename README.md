@@ -45,7 +45,7 @@ After you will found all the static files in the `dist` directory.
 
 ### Build static site on NGINX
 
-You can see a preview using NGINX with using docker.
+You can see a preview using NGINX using docker.
 
 ```sh
 docker compose up -d
