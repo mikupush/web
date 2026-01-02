@@ -1,5 +1,4 @@
 ---
-import {Button} from "@/components/ui/button";
 import ThemeSwitch from "@/components/ThemeSwitch.tsx";
 import NavLinks from "@/components/NavLinks.tsx";
 import LanguageSelect from "@/components/LanguageSelect.tsx";
@@ -13,10 +12,10 @@ import MobileMenu from "@/components/MobileMenu.tsx";
 
     <nav class="hidden md:flex items-center gap-3">
       <NavLinks/>
-      <ThemeSwitch client:only />
-      <LanguageSelect client:only />
+      <ThemeSwitch client:only="react" />
+      <LanguageSelect client:only="react" />
     </nav>
 
-    <MobileMenu client:only />
+    <MobileMenu client:only="react" />
   </div>
 </header>

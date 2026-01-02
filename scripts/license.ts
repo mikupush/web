@@ -1,0 +1,129 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
+import {globSync} from 'glob'
+import ignore from 'ignore'
+
+const licenseHeader = `
+/**
+ * Miku Push! Web is the main web page of Miku Push!
+ * Copyright (C) 2025  Miku Push! Team
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+`
+
+const astroSourcePatterns = [
+  'src/**/*.astro',
+]
+
+const typeScriptSourcePatterns = [
+  'src/**/*.ts',
+  'src/**/*.tsx',
+]
+
+const cssSourcePatterns = [
+  'src/**/*.css',
+]
+
+const excludePatterns = [
+  'src/ui/*'
+]
+
+const ignoredFiles = ignore().add(excludePatterns)
+const regex = /^\/\*\*\n \* Miku Push! Server is the backend behind Miku Push!/
+
+const rootDir = process.cwd()
+
+function collectFiles(patterns: string[]): string[] {
+  const files = new Set<string>()
+
+  patterns.forEach((pattern) => {
+    const matches = globSync(pattern, {
+      cwd: rootDir,
+      nodir: true
+    })
+
+    matches
+      .filter(match => !ignoredFiles.ignores(match))
+      .forEach((match) => files.add(match))
+  })
+
+  return Array.from(files).sort()
+}
+
+function getSourceCode(filePath: string): string {
+  const absolutePath = path.resolve(rootDir, filePath)
+  const content = fs.readFileSync(absolutePath, 'utf-8')
+  return content.trim()
+}
+
+function addLicense(sourceFiles: string[], licenseHeader: string, regex: RegExp): void {
+  const trimmedHeader = licenseHeader.trim()
+
+  for (const sourceFile of sourceFiles) {
+    const sourceCode = getSourceCode(sourceFile)
+
+    if (regex.test(sourceCode)) {
+      console.log(`file ${sourceFile} already has license header`)
+      continue
+    }
+
+    const absolutePath = path.resolve(rootDir, sourceFile)
+    if (sourceFile.endsWith('.astro')) {
+      let content = sourceCode.replace(/^---/g, '')
+
+      if (!sourceCode.startsWith('---')) {
+        content = `---\n${trimmedHeader}\n---\n\n${content}`
+      } else {
+        content = `---\n${trimmedHeader}\n\n${content}`
+      }
+
+      fs.writeFileSync(absolutePath, content, 'utf-8')
+    } else {
+      fs.writeFileSync(absolutePath, `${trimmedHeader}\n\n${sourceCode}`, 'utf-8')
+    }
+
+    console.log('license header added on ', sourceFile)
+  }
+}
+
+function removeLicense(sourceFiles: string[], licenseHeader: string): void {
+  const trimmedHeader = licenseHeader.trim()
+
+  for (const sourceFile of sourceFiles) {
+    const sourceCode = getSourceCode(sourceFile)
+    const absolutePath = path.resolve(rootDir, sourceFile)
+    const updatedSource = sourceCode.replace(trimmedHeader, '').trim()
+    fs.writeFileSync(absolutePath, updatedSource, 'utf-8')
+    console.log('license header removed on ', sourceFile)
+  }
+}
+
+const args = process.argv.slice(2)
+const shouldRemove = args.includes('--remove')
+
+if (shouldRemove) {
+  console.log('removing license header from source code')
+  removeLicense(collectFiles(typeScriptSourcePatterns), licenseHeader)
+  removeLicense(collectFiles(astroSourcePatterns), licenseHeader)
+  removeLicense(collectFiles(cssSourcePatterns), licenseHeader)
+  console.log('removed license header from source code')
+} else {
+  console.log('adding license header to source code')
+  addLicense(collectFiles(typeScriptSourcePatterns), licenseHeader, regex)
+  addLicense(collectFiles(astroSourcePatterns), licenseHeader, regex)
+  addLicense(collectFiles(cssSourcePatterns), licenseHeader, regex)
+  console.log('added license header to all source code')
+}
