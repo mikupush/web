@@ -38,11 +38,11 @@ const cssSourcePatterns = [
 ]
 
 const excludePatterns = [
-  'src/ui/*'
+  'src/components/ui/*.tsx'
 ]
 
 const ignoredFiles = ignore().add(excludePatterns)
-const regex = /^\/\*\*\n \* Miku Push! Server is the backend behind Miku Push!/
+const regex = /^(---\n)?\/\*\*\n \* Miku Push! Web is the main web page of Miku Push!/
 
 const rootDir = process.cwd()
 
