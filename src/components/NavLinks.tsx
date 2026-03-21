@@ -17,15 +17,17 @@
  */
 
 import LinkButton from "@/components/LinkButton.tsx";
-import {SquareArrowOutUpRight} from "lucide-react";
-import {useTranslation} from "react-i18next";
+import { SquareArrowOutUpRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import i18n from 'i18next'
 
 export default function NavLinks() {
   const { t } = useTranslation()
+  const lang = i18n.language
 
   return (
     <>
-      {/*<LinkButton href="#docs">{t('docs')}</LinkButton>*/}
+      <LinkButton href={lang !== 'en' ? `/${lang}/docs` : '/docs'}>{t('docs')}</LinkButton>
       <LinkButton href="#downloads">{t('download')}</LinkButton>
       <LinkButton
         href="https://github.com/mikupush"
@@ -34,7 +36,7 @@ export default function NavLinks() {
         className="flex items-center gap-1"
       >
         {t('github')}
-        <SquareArrowOutUpRight className="w-4 h-4"/>
+        <SquareArrowOutUpRight className="w-4 h-4" />
       </LinkButton>
     </>
   )
