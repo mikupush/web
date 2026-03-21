@@ -32,5 +32,8 @@
   "open_menu": "Abrir Menu",
   "close_menu": "Cerrar Menu",
   "hatsune_miku_copyright": "La mascota de Miku Push! es Hatsune Miku, un personaje creado por Crypton Future Media, INC. © Crypton Future Media, INC. 2007.",
-  "not_affiliated": "Este proyecto no está afiliado con o apoyado por Crypton Future Media, INC."
+  "not_affiliated": "Este proyecto no está afiliado con o apoyado por Crypton Future Media, INC.",
+  "not_code_signed": "¡El codigo no esta firmado!",
+  "not_code_signed_windows": "Por motivos economicos el ejecutable no esta firmado y te saldra el SmartScreen de Windows cuando intentes instalar el programa, si no confias en el instalador precompilado te recomendamos que lo compiles directamente en tu ordenador descargando el codigo fuente. Puedes ver como hacerlo en la pagina de",
+  "build_from_source": "compilar desde el codigo fuente"
 }

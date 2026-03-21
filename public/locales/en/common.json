@@ -32,5 +32,8 @@
   "open_menu": "Open Menu",
   "close_menu": "Close Menu",
   "hatsune_miku_copyright": "The mascot of Miku Push! is Hatsune Miku, a character created by Crypton Future Media, INC. © Crypton Future Media, INC. 2007.",
-  "not_affiliated": "This project is not affiliated with or endorsed by Crypton Future Media, INC."
+  "not_affiliated": "This project is not affiliated with or endorsed by Crypton Future Media, INC.",
+  "not_code_signed": "Code isn't signed!",
+  "not_code_signed_windows": "We can't afford to buy code signing certificates for Windows sice they are very expensive. When you try to install the program the Windows SmartScreen will appear, if you don't rely on the precompiled installers you can",
+  "build_from_source": "build from source"
 }

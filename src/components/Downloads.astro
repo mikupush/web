@@ -18,13 +18,17 @@
  */
 
 
-import {t} from 'i18next'
+import i18n, {t} from 'i18next'
 import LinuxIcon from './icons/LinuxIcon'
 import DownloadButton from "@/components/DownloadButton.tsx";
 import AppleIcon from './icons/AppleIcon';
 import WindowsIcon from './icons/WindowsIcon';
 import {Separator} from './ui/separator'
 import MikuPC from "@/components/MikuPC.tsx";
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { TriangleAlert } from 'lucide-react';
+
+const lang = i18n.language
 ---
 
 <section id="downloads">
@@ -32,7 +36,7 @@ import MikuPC from "@/components/MikuPC.tsx";
     <span aria-hidden="true">💾</span> {t('download_now')}
   </h2>
 
-  <div class="md:w-4xl mx-auto md:flex md:items-center md:justify-between">
+  <div class="md:w-4xl mx-auto relative">
     <div class="space-y-15 mb-15">
       <div>
         <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
@@ -52,7 +56,7 @@ import MikuPC from "@/components/MikuPC.tsx";
           </div>
         </div>
       </div>
-      <Separator />
+      <Separator className="w-full md:w-1/2" />
       <div>
         <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
           <LinuxIcon className="inline-block w-10 h-10 mr-3" /> Linux
@@ -70,14 +74,24 @@ import MikuPC from "@/components/MikuPC.tsx";
           </div>
         </div>
       </div>
-      <Separator />
+      <Separator className="w-full md:w-1/2" />
       <div>
         <h3 class="text-2xl md:text-3xl font-bold mb-10 flex items-end">
           <WindowsIcon className="inline-block w-10 h-10 mr-3" /> Windows
         </h3>
+        <Alert className="mb-5">
+          <TriangleAlert className="size-5" />
+          <AlertTitle className="text-left text-lg">{t('not_code_signed')}</AlertTitle>
+          <AlertDescription className="text-left">
+            {t('not_code_signed_windows')}&nbsp;
+            <a class="underline" href={lang !== 'en' ? `/${lang}/docs/client/building-from-source` : '/docs/client/building-from-source'}>
+              {t('build_from_source')}
+            </a>
+          </AlertDescription>
+        </Alert>
         <DownloadButton artifact="windows" client:load>{t('download_windows')}</DownloadButton>
       </div>
     </div>
-    <MikuPC className="w-1/2 hidden md:block" />
+    <MikuPC className="absolute w-1/2 hidden md:block right-0 top-1/7 z-10 h-96" />
   </div>
 </section>
