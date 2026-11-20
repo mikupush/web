@@ -1,3 +1,5 @@
+name: mikupush-web
+
 services:
   web:
     build: .
